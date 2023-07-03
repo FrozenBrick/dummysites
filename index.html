@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <title>Frozen Brick</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Amatic+SC"
+  />
+  <style>
+    body,
+    html {
+      height: 100%;
+    }
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Amatic SC", sans-serif;
+    }
+    video {
+      object-fit: cover;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+
+  <body>
+    <video autoplay muted id="myVideo">
+      <source src="images/d.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="w3-display-bottomleft w3-padding">
+      <span class="w3-tag w3-large"
+        ><a href="/audio/play.html">musick, Bilawal</a></span
+      >
+    </div>
+    <div class="w3-display-middle w3-center w3-animate-opacity">
+      <h1 id="jokeText" style="font-size: 10rem">
+        Wanna Hear Something Funny?
+      </h1>
+    </div>
+
+    <script>
+      function animateText() {
+        const jokeText = document.getElementById("jokeText");
+        jokeText.innerText = "Wanna Hear Something Funny?";
+
+        setTimeout(() => {
+          fetchJoke();
+        }, 4000);
+      }
+
+      function fetchJoke() {
+        fetch("https://v2.jokeapi.dev/joke/Miscellaneous,Dark,Pun?type=single")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.type === "twopart") {
+              jokeText.innerHTML = `${data.setup}<br>${data.delivery}`;
+            } else if (data.type === "single") {
+              jokeText.innerText = data.joke;
+            } else {
+              fetchJoke();
+            }
+            adjustFontSize();
+            setTimeout(showEmojis, 5000);
+          })
+          .catch(() => {
+            fetchJoke();
+          });
+      }
+
+      function adjustFontSize() {
+        const jokeText = document.getElementById("jokeText");
+        const textWidth = jokeText.clientWidth;
+        const containerWidth = jokeText.parentNode.clientWidth;
+        const scaleFactor = containerWidth / textWidth;
+        const fontSize = 5 * scaleFactor;
+        jokeText.style.fontSize = `${fontSize}vw`;
+      }
+
+      function showEmojis() {
+        const emojis = ["😂", "🤣", "😆"];
+        const container = document.querySelector(".w3-display-middle");
+        for (let i = 0; i < emojis.length; i++) {
+          setTimeout(() => {
+            const emoji = document.createElement("div");
+            emoji.style.fontSize = "10vw";
+            emoji.style.position = "absolute";
+            emoji.style.top = `${Math.random() * 100}%`;
+            emoji.style.left = `${Math.random() * 100}%`;
+            emoji.innerText = emojis[i];
+            container.appendChild(emoji);
+            setTimeout(() => {
+              container.removeChild(emoji);
+            }, 5000);
+          }, i * 1000);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", animateText);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+
+
+body{
+
+  text-align: center;
+  font-family: 'Combo',cursive;
+  margin: 0;
+
+}
+
+span{
+  text-decoration: underline;
+}
+
+
+h1{
+  margin: 90px auto 0 auto;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 5.6rem; /*16px = 1 rem*/
+  color: #D2001A;
+}
+
+h2{
+  color: #66BFBF;
+  font-size: 2.5rem;
+  font-weight: normal;
+}
+
+h3{
+  color: #11999E
+}
+
+a {
+  color:  #11999E
+}
+
+.top{
+  position: relative;
+  padding-top: 100px;
+  background-color: #CDF0EA;
+
+
+}
+.top-cloud{
+  position: absolute;
+  right: 300px;
+  top: 50px;
+  padding-top: 50px;
+}
+
+.buttom-cloud{
+
+  position: absolute;
+  left: 300px;
+  bottom: 300px;
+}
+
+/*.cloud{
+  width: 50%;
+}*/
+
+.middle{
+
+}
+
+.buttom{
+
+}
+
+.skill{
+  width: 15%;
+  float: left;
+  margin-right: 30px;
+}
+
+.skill-row{
+  width: 25%;
+  margin: 50px auto 50px auto;
+  text-align: left;
+}
+
+.para{
+  line-height: 2;
+}
+
+.vol{
+  float: right;
+  margin-left: 30px;
+
+}
+
+hr{
+  border-style: dotted none none none;
+  width: 10%;
+  border-width: 20px
+}
