@@ -31,6 +31,14 @@
         top: 0;
         left: 0;
       }
+      h1 {
+        font-size: 8v;
+      }
+      @media screen and (max-width: 480px) {
+        h1 {
+          font-size: 16v;
+        }
+      }
     </style>
   </head>
 
@@ -45,7 +53,7 @@
       >
     </div>
     <div class="w3-display-middle w3-center w3-animate-opacity">
-      <h1 id="jokeText" style="font-size: 11vw">Wanna Hear Something Funny?</h1>
+      <h1 id="jokeText">Wanna Hear Something Funny?</h1>
     </div>
 
     <script>
@@ -83,7 +91,7 @@
         const containerWidth = jokeText.parentNode.clientWidth;
         const scaleFactor = containerWidth / textWidth;
         const fontSize = 8 * scaleFactor;
-        jokeText.style.fontSize = `${fontSize}vw`;
+        jokeText.style.fontSize = `${fontSize}vx`;
       }
 
       function showEmojis() {
